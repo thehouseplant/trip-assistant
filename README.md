@@ -1,1 +1,1 @@
-# trip-assistant
+# Trip Assistant
