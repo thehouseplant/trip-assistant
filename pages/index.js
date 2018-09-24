@@ -5,7 +5,7 @@ import Layout from '../components/layout'
 
 export default () => {
   return (
-    <Layout title={ 'Next.js + Express' }>
+    <Layout title={ 'Trip Assistant - Home' }>
       <div className='container'>
         <div className='jumbotron'>
           <h1>Trip Assistant</h1>

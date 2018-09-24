@@ -23,13 +23,7 @@ export default ({ children, title = 'Trip Assistant' }) => (
         <div className="collapse navbar-collapse" id="navbarCollapse">
           <ul className="navbar-nav mr-auto">
             <li className="nav-item active">
-              <a className="nav-link" href="#">Home <span className="sr-only">(current)</span></a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link" href="#">Link</a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link disabled" href="#">Disabled</a>
+              <Link href='/'><a className="nav-link" href="#">Home</a></Link>
             </li>
           </ul>
         </div>
@@ -42,7 +36,7 @@ export default ({ children, title = 'Trip Assistant' }) => (
 
     <footer className="footer">
       <div className="container">
-        <span className="text-muted">Place sticky footer content here.</span>
+        <span className="text-muted">Trip Assistant made with love, coffee, and heavy metal</span>
       </div>
     </footer>
 
