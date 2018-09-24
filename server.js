@@ -1,13 +1,12 @@
 const express = require('express')
 const next = require('next')
-const yelp = require('yelp-fusion')
+const axios = require('axios')
 
 const port = parseInt(process.env.PORT, 10) || 3000
 const dev = process.env.NODE_ENV !== 'production'
 const app = next({ dev })
 const handle = app.getRequestHandler()
 
-const clientID = process.env.YELP_CLIENTID
 const apiKey = process.env.YELP_APIKEY
 
 const searchRequest = {
@@ -15,7 +14,13 @@ const searchRequest = {
   location: 'San Francisco, CA'
 }
 
-const client = yelp.client(apiKey)
+const config = {
+  headers: {'Authorization': `Bearer ${apiKey}`},
+  params: {
+    term: searchRequest.term,
+    location: searchRequest.location
+  }
+}
 
 app.prepare()
   .then(() => {
@@ -24,14 +29,12 @@ app.prepare()
     server.get('*', (req, res) => {
       return handle(req, res)
     })
+    
+    console.log(apiKey)
 
-    client.search(searchRequest).then(res => {
-      const firstResult = response.jsonBody.businesses[0]
-      const prettyJson = JSON.stringify(firstResult, null, 4);
-      console.log(prettyJson)
-    }).catch(error => {
-      console.error(error)
-    })
+    axios.get(`https://api.yelp.com/v3/businesses/search`, config)
+      .then(response => console.log(response))
+    
 
     server.listen(port, (err) => {
       if (err) throw err
