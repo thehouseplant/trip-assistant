@@ -6,8 +6,8 @@ const dev = process.env.NODE_ENV !== 'production'
 const app = next({ dev })
 const handle = app.getRequestHandler()
 
-const clientID = 'w1AnwjlOriaMYXqCtU3izw'
-const apiKey = 'eaQbNnUvFPMlBONpRWDphtKNHf_Ai-Clz6FmY8Gnwlgg0hyul9ZLjWQZhdJbhIs2Yb9hKSguerHXfC7BEuWVKkF8GPDnQNfuiB16bkr18pnQZg0B6ULNXEVvwimoW3Yx'
+const clientID = process.env.YELP_CLIENTID
+const apiKey = process.env.YELP_APIKEY
 
 app.prepare()
   .then(() => {
